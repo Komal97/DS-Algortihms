@@ -54,23 +54,21 @@ class LinkedList:
             fast = fast.link.link
         return slow
 
-    # sorting
-    def sort(self, head):
-        if head == None or head.link == None:
-            return head
-
-        mid = self.find_mid(head)
-        a = head
-        b = mid.link
-        mid.link = None
-        a = self.sort(a)
-        b = self.sort(b)
-        c = self.merge(a,b)
-        return c
-
     # merge sort
     def merge_sort(self):
-        self.head = self.sort(self.head)
+        def sort(head):
+            if head == None or head.link == None:
+                return head
+
+            mid = self.find_mid(head)
+            a = head
+            b = mid.link
+            mid.link = None
+            a = sort(a)
+            b = sort(b)
+            c = self.merge(a,b)
+            return c
+        self.head = sort(self.head)
 
     # build user input linked list 
     def build_ll(self):

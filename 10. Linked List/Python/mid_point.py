@@ -36,10 +36,10 @@ class LinkedList:
     # find middle element using runner's method
     def find_mid(self):
         if self.head == None or self.head.link == None:
-            return self.head
+            return self.head.data
        
-      # fast = self.head.next  #if middle elemet in even length array is one one
-        fast = self.head       #if middle elemet in even length array is second one
+      # fast = self.head.next  #if middle element in even length array is first one
+        fast = self.head       #if middle element in even length array is second one
         slow = self.head
         
         while(fast != None and fast.link != None):

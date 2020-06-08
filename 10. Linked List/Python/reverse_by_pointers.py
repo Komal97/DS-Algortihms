@@ -45,20 +45,17 @@ class LinkedList:
             c = n
         self.head = p
 
-    # called in reverse_recursive func to reverse linked list recursively 
-    def reverse(self, head):
-        if(head == None or head.link == None):
-            return head
-        small_head = self.reverse(head.link)
-        c = head
-        c.link.link = c
-        c.link = None
-        return small_head
-
-    # reverse linked list recursively by reversing pointers 
+    # reverse linked list recursively by reversing pointers
     def reverse_recursive(self):
-
-        self.head = self.reverse(self.head)
+        def reverse(head):
+            if head.link == None or head == None:
+                return head
+            smallhead = reverse(head.link)
+            c = head
+            c.link.link = c 
+            c.link = None
+            return smallhead
+        self.head = reverse(self.head)
 
     # print linked list
     def print_list(self):

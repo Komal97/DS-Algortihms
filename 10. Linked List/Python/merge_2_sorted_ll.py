@@ -33,25 +33,53 @@ class LinkedList:
             self.insert_at_tail(data)
             data = int(input())
 
-    # function called in merge_ll to merge 
-    def merge(self, a, b):
+    # function to merge 2 sorted linked list iteratively
+    def merge_iterative(self, a, b):
         if a == None:
-            return b
-
+            self.head = b
+            return
         elif b == None:
-            return a
+            self.head = a
+            return 
         
-        if (a.data < b.data):
-            c = a
-            c.link = self.merge(a.link, b)
+        if a.data <= b.data:
+            self.head = a
+            a = a.link
         else:
-            c = b
-            c.link = self.merge(a, b.link)
-        return c
-    
-    # function to merge 2 linked list
+            self.head = b
+            b = b.link
+            
+        c = self.head
+        while(a != None and b != None):
+            if a.data < b.data:
+                c.link = a
+                a = a.link
+            else:
+                c.link = b
+                b = b.link
+            c = c.link
+        if a:
+            c.link = a
+        if b:
+            c.link = b
+       
+    # function to merge 2 sorted linked list recursively
     def merge_ll(self, a, b):
-        self.head = self.merge(a, b)
+        def merge(a, b):
+            if a == None:
+                return b
+
+            elif b == None:
+                return a
+            
+            if (a.data < b.data):
+                c = a
+                c.link = merge(a.link, b)
+            else:
+                c = b
+                c.link = merge(a, b.link)
+            return c
+        self.head = merge(a, b)
 
     # print linked list
     def print_list(self):
@@ -69,8 +97,12 @@ ll2 = LinkedList()
 ll2.build_ll()
 ll2.print_list()
 
-ll3 = LinkedList()
-ll3.merge_ll(ll1.head, ll2.head)
-ll3.print_list()
+# ll3 = LinkedList()
+# ll3.merge_ll(ll1.head, ll2.head)
+# ll3.print_list()
+
+ll4 = LinkedList()
+ll4.merge_iterative(ll1.head, ll2.head)
+ll4.print_list()
 
 

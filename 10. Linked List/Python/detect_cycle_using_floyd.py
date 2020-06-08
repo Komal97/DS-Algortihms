@@ -59,7 +59,8 @@ class LinkedList:
                 prev = fast
                 fast = fast.link
                 slow = slow.link
-            prev.link = None
+			if prev:
+				prev.link = None
 
     # print linked list
     def print_list(self):
