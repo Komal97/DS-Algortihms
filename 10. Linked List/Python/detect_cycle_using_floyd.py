@@ -41,26 +41,24 @@ class LinkedList:
 
      # detect and remove cycle 
     def detect_and_remove_cycle(self):
-        flag = False
+        
         slow = self.head
         fast = self.head
-        prev = None
+		prev = None
         while fast!=None and fast.link!=None:
-            prev = slow
+			prev = slow
             slow = slow.link
             fast = fast.link.link
             if slow == fast:
-                flag =  True
                 break
 
-        if flag == True:
+        if slow == fast:
             slow = self.head
             while slow != fast:
-                prev = fast
+				prev = fast
                 fast = fast.link
                 slow = slow.link
-			if prev:
-				prev.link = None
+			prev.link = None
 
     # print linked list
     def print_list(self):
