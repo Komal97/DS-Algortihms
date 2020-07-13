@@ -47,8 +47,28 @@ def printLevelOrder(root):
     for level in range(n):
         printLevel(root, level)
         print()
+        
+# print level order iteratively
+# for each level, run a loop
+# remove, print element and push their children
+from collections import deque
+def printLevelOrderIteratively(root):
+    q = deque()
+    q.append(root)
+    
+    while len(q) > 0:
+        size = len(q)
+        for i in range(size):
+            node = q.popleft()
+            print(node.data, end = " ")
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        print()
 
 root = buildTree()
 print('total nodes in tree: ', countNode(root))
 print('height of tree: ', height(root))
 printLevelOrder(root)
+printLevelOrderIteratively(root)
