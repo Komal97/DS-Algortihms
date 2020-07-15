@@ -1,0 +1,8 @@
+medium
+https://practice.geeksforgeeks.org/problems/check-for-bst/1
+
+
+easy 
+https://practice.geeksforgeeks.org/problems/print-bst-elements-in-given-range/1
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+https://practice.geeksforgeeks.org/problems/array-to-bst/0
