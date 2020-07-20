@@ -24,6 +24,12 @@ def arrayToBST(root, arr, s, e):
     root.right = arrayToBST(root.right, arr, mid+1, e)
     return root 
 
+def buildTree():
+    root = None
+    arr = [1, 2, 4, 5, 6, 8, 9, 10]
+    root = arrayToBST(root, arr, 0, len(arr)-1)
+    return root 
+
 def printLevelOrder(root):
 
     q = deque()
@@ -41,8 +47,5 @@ def printLevelOrder(root):
         print()   
 
 
-arr = [1, 2, 4, 5, 6, 8, 9]
-
-root = None
-root = arrayToBST(root, arr, 0, len(arr)-1)
+root = buildTree()
 printLevelOrder(root)
