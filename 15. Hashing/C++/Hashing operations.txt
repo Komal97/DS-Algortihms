@@ -81,10 +81,19 @@ class Hashtable{
     T *erase(string key){
         int i=hashfunc(key);
         node<T> *temp=buckets[i];
+        if(temp && temp->key == key){
+            buckets[i] = temp->next;
+            delete temp;
+            return;
+        }
         while(temp!=NULL){
             if(temp->next->key==key){
-                
+                node<T> *ptr = temp->next;
+                temp->next = ptr->next;
+                delete ptr;
+                return;
             }
+            temp = temp->next;
         }
     }
 };
