@@ -1,5 +1,4 @@
 '''
-https://practice.geeksforgeeks.org/problems/total-decoding-messages/0
 Given a number find all the possible mappings of the characters in sorted order.
 Examples:
 Input: 123
