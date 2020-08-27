@@ -51,10 +51,9 @@ for i in range(edges):
     parts = list(map(int, input().split()))
     src = int(parts[0])
     nbr = int(parts[1])
-    dist = int(parts[2])
-    edge = Edge(src, nbr, dist)
-    graph[edge.src].append(edge)                        # add edge as an object in graph
-    graph[edge.nbr].append(edge)
+    wt = int(parts[2])
+    graph[src].append(Edge(src, nbr, wt))               # add edge as an object in graph
+    graph[nbr].append(Edge(src, nbr, wt))
     
 source = int(input())                                   # source node
 destination = int(input())                              # destination node
