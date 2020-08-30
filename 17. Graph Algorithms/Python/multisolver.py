@@ -1,3 +1,7 @@
+'''
+find smallest path, largest path, floor and ceil path, kth largest path
+'''
+
 from collections import defaultdict
 from heapq import heappush, heappop
 class Edge:
@@ -14,7 +18,7 @@ cpath = ''
 cweight = float('inf')
 fpath = ''
 fweight = float('-inf')
-heap = []
+heap = []                       # use to find kth largest path
 def print_path(src, dest, criteria, k, visited, weight, graph, output):
     global spath 
     global sweight 
