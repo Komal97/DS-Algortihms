@@ -25,6 +25,7 @@ class Queue:
             return
         temp = self.head
         self.head = self.head.next
+        temp.next = None
         temp = None
         self.length -= 1
     
