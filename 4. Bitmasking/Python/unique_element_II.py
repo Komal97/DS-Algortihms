@@ -1,40 +1,44 @@
 '''
 https://practice.geeksforgeeks.org/problems/finding-the-numbers/0
-Input an array
-In array, each number is occuring twice except two elements, find those unique elements
-Eg : 1, 2, 2, 1, 3, 5 --> ans - 3, 5
+IYou are given an array A containing 2*N+2 positive numbers, out of which 2*N numbers exist in pairs whereas the other two number occur exactly once and are distinct. 
+You need to find the other two numbers and print them in ascending order.
+Input :
+2
+2
+1 2 3 2 1 4
+1
+2 1 3 2
+
+Output :
+3 4
+1 3
 '''
 
-def find_2_unique_elements(arr, n):
-
-    ans = 0
-    for i in range(n):
-        ans = ans ^ arr[i]              # find xor of all elements
+def find_numbers(arr, n):
     
-    count = 0
-    temp = ans
+    number = 0
+    for num in arr:
+        number ^= num                   # find xor of all elements
+        
+    rsbm = (number&-number)             # find rightmost set bit mask
     
-    while(temp!=0):                     # find position of first set bit in xor ans
-        if temp&1:
-            break
-        count += 1
-        temp = temp >> 1
-
-    mask = 1<<count                     # first num = xoring all elements having set bit at same position with xor ans
-    firstno = 0
-    for i in range(n):
-        if arr[i] & mask:
-            firstno = firstno ^ arr[i]
-    print("firstno: ", firstno)         # second num = xor ans ^ first num
-    secondno = ans ^ firstno
-    print("secondno: ", secondno)
-
-
-def main():
+    first_num = 0
+    for num in arr:
+        if (num&rsbm)!=0:               # xoring all element with rightmost set bit
+            first_num ^= num
     
-    arr = list(map(int, input().split()))
-    n = len(arr)
-
-    find_2_unique_elements(arr, n)
-
-main()
+    second_num = first_num ^ number     # second num = xor ans ^ first num
+    
+    if first_num > second_num:
+        print(second_num, first_num)
+    else:
+        print(first_num, second_num)
+        
+    
+if __name__ == '__main__':
+    t = int(input())
+    while t:
+        n = int(input())
+        arr = list(map(int, input().split()))
+        find_numbers(arr, n)
+        t -= 1
