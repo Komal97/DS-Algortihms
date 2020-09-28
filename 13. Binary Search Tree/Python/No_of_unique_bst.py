@@ -60,3 +60,15 @@ if __name__ == '__main__':
     print()
     for i in range(6):
         print(catalan_using_formula(i), end = ", ")
+        
+# using tabulation
+# if n=4, C0*C3 + C1*C2 + C2*C1 + C3*C0
+n = int(input())
+dp = [0]*(n+1)
+dp[0] = 1
+dp[1] = 1
+for i in range(2, n+1):
+    for j in range(i):
+        dp[i] += (dp[j]*dp[i-j-1])
+
+print(dp[n])
