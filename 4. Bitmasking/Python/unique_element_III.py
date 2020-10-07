@@ -41,25 +41,26 @@ n = len(arr)
 find_3_unique_elements(arr, n)
 
 
-
-
 class Solution:
-    # @param A : tuple of integers
-    # @return an integer
-    def singleNumber(self, A):
+    def singleNumber(self, nums: List[int]) -> int:
         
-        A = list(A)
-        res = 0
-        for i in range(64):
-            j = 0
-            cnt = 0
-            while j < len(A):
-                cnt += (A[j]&1)
-                val = A[j]>>1
-                A[j] = int(val)
-                j += 1
-            res |= ((cnt%3)<<i)
-            
-            
-        return res
+        n = len(nums)
+        ans = 0
+        
+        for i in range(32):
+            count = 0
+            for j in range(n):
+                count += (nums[j]>>i)&1
                 
+            rem = count%3
+            # For a 32 bit number, if i == 31, we are on the bit telling us whether the number is negative or not. 
+            # The statement 'if i == 31 and rem' turns that into, "if we are on the bit that tells us the sign, 
+            # and the number that appears not three times has a 1 here", then take the largest 32 bit integer and 
+            # subtract it from ans. If the number that we are looking for is negative, 
+            # this will give the correct answer.
+            if i == 31 and rem:
+                ans -= (1<<31)
+            else:
+                ans |= (rem<<i)
+
+        return ans
