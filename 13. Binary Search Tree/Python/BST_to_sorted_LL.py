@@ -92,3 +92,19 @@ root = buildTree()
 printLevelOrder(root)
 pair = convertBSTtoLL(root)
 printLL(pair.head)
+
+
+# method - 2
+# keep previous node and connect prev to current root in inorder manner
+def convertBSTtoLL(root, head, prev):
+    if root == None:
+        return 
+
+    convertBSTtoLL(root.left, head, prev)
+    if head[0] == None:
+        head[0] = root 
+    else:
+        prev[0].right = root 
+        prev[0].left = None 
+    prev[0] = root 
+    convertBSTtoLL(root.right, head, prev)
