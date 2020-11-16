@@ -3,10 +3,9 @@ input: (A+B) + (C+d)
 output: True/False (tell whether paranthesis are balanced or not)
 '''
 
-from collections import deque
-
 def balanced_paranthesis(expression):
-    stack = deque([])
+    
+    stack = []
     for ch in expression:
         if ch == '(':
             stack.append(ch)

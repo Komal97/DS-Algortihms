@@ -9,7 +9,7 @@ class StackUsingQueue:
     def pop(self):
         n = len(self.q1)
         # transfer n-1 elements at back of q1
-        for i in range(n):
+        for i in range(n-1):
             self.q1.append(self.q1.popleft())
         if len(self.q1) > 0:
             self.q1.popleft()
@@ -20,7 +20,11 @@ class StackUsingQueue:
         # transfer n-1 elements at back of q1
         for i in range(n-1):
             self.q1.append(self.q1.popleft())
-        return self.q1[0]
+            
+        if len(q) > 0:
+            top_val = self.q[0]
+            self.q1.append(self.q1.popleft())
+        return top_val
 
     def empty(self):
         return len(self.q1) == 0
