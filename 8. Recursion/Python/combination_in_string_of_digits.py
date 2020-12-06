@@ -50,3 +50,29 @@ if __name__ == '__main__':
         print()
         t-=1
  
+# method - 3 
+def permutations(input_str, i, output, j):
+    if i == len(input_str):
+        print(*output[:j], sep = "")
+        return 
+    
+    # 2 options
+    
+    # space and character
+    output[j] = ' '
+    output[j+1] = input_str[i]
+    permutations(input_str, i+1, output, j+2)
+    
+    # character without space
+    output[j] = input_str[i]
+    permutations(input_str, i+1, output, j+1)
+    
+
+input_str = input()
+output = [''] * (2*len(input_str))
+
+# add first character in array 
+output[0] = input_str[0]
+permutations(input_str, 1, output, 1)
+
+ 
