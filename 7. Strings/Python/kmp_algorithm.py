@@ -12,8 +12,8 @@ pattern found at  17
 def kmp_precompute(pattern, lps):
     
     n = len(pattern)
-    i = 0                              # begaving as pattern ptr
-    j = 1                              # begaving as text ptr
+    i = 0                              # behaving as pattern ptr
+    j = 1                              # behaving as text ptr
 
     while j < n:
         if pattern[i] == pattern[j]:
