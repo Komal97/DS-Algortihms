@@ -22,6 +22,17 @@ def count_set_bits_2(n):
         n = n&(n-1)
     return count
 
+# method - 3
+# complexity = o(no. of set bits)
+def count_set_bits_3(n):
+    count = 0
+    while(n):
+        rsbm = n&-n
+        n -= rsbm
+        count += 1
+        
+    return count
+
 def main():
     a = int(input())
     b = int(input())
@@ -29,4 +40,7 @@ def main():
     c = a ^ b
     print(count_set_bits(c))
     print(count_set_bits_2(c))
+    print(count_set_bits_3(c))
 main()
+
+
