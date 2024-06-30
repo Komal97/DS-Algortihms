@@ -33,10 +33,8 @@ def countsort(arr, n):
         freq[idx] += 1
 
     # find cumulative sum of frequencies to keep next index  - [3, 5, 7, 10, 10, 11, 15] - indicating indexes starting from 1, not 0
-    sumTillNow = 0
-    for i in range(rangeVal):
-        sumTillNow += freq[i]
-        freq[i] = sumTillNow                
+    for i in range(1, rangeVal):
+        freq[i] += freq[i-1]               
 
     ans = [0 for _ in range (n)] 
 
@@ -45,7 +43,9 @@ def countsort(arr, n):
         ans[freq[idx] - 1] = arr[i]        # put current value into ans array at index represented by fre
         freq[idx] -= 1                 
     
-    
+    # fill original array
+    for i in range(n):
+        arr[i] = ans[i]
     
 if __name__ == '__main__':
     n = int(input())
