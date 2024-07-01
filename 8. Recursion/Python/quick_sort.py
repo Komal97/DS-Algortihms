@@ -7,25 +7,26 @@ to avoid worst case scenario - which is sorted array, shuffling of array is done
 import random
 
 def partition(arr, s, e):
-    
-    i = s-1           # denote left part of pivot
-    j = s             # denote right part of pivot
-    pivot = arr[e]
-    while(j <= e-1):
-        if arr[j] <= pivot:
-            i += 1
-            arr[i], arr[j] = arr[j], arr[i]
-        j += 1
-        
-    arr[i+1], arr[e] = arr[e], arr[i+1]
-    return i+1
+    i = s     # denotes left side of pivot which is lesser than pivot
+    j = s     # denotes right side of pivot which is greater than pivot
 
-def quicksort(arr, s, e):
+    pivot = arr[e]
+    while j <= e:
+        if arr[j] <= pivot:        # if current value is smaller, means move it to left side (denoted by i)
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+            j += 1
+        else:
+            j += 1
+    return i-1
+
+def quickSort(arr, s, e):
     if s >= e:
         return
-    p = partition(arr, s, e)
-    quicksort(arr, s, p-1)
-    quicksort(arr, p+1, e)
+
+    pi = partition(arr, s, e)    # pi is the index which is at sorted place
+    quickSort(arr, s, pi-1)
+    quickSort(arr, pi+1, e)
 
 if __name__ == '__main__':
     n = int(input())
