@@ -3,6 +3,7 @@ find number of days from current day on which price is greater than current
 Input: 100 80 60 70 60 75 85
 Output: [0, 1, 1, 2, 1, 4, 6]
 '''
+#nearest left greater element
 from collections import deque
 def stock_span(prices, n):
     stack = deque([])
