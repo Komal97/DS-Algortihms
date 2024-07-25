@@ -38,8 +38,8 @@ def getStairPath(n, output):
         print(output)
         return 
     
-    getStairPath(n-1, '1'+output)
-    getStairPath(n-2, '2'+output)
-    getStairPath(n-3, '3'+output)
+    getStairPath(n-1, output + '1')
+    getStairPath(n-2, output + '2')
+    getStairPath(n-3, output + '3')
 
 getStairPath(4, '')
