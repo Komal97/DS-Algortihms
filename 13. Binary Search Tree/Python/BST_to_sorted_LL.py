@@ -106,5 +106,9 @@ def convertBSTtoLL(root, head, prev):
     else:
         prev[0].right = root 
         prev[0].left = None 
+        
     prev[0] = root 
     convertBSTtoLL(root.right, head, prev)
+    if prev[0] != None:
+        prev[0].left = None
+    return head[0]
